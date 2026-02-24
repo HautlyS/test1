@@ -6,13 +6,22 @@ function Model({ url }) {
   return <primitive object={scene} />
 }
 
+function FallbackModel() {
+  return (
+    <mesh>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color="orange" />
+    </mesh>
+  )
+}
+
 export default function App() {
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
+    <div style={{ width: '100vw', height: '100vh', background: '#111' }}>
       <Canvas>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
-        <Model url="/model.glb" />
+        <FallbackModel />
         <OrbitControls />
       </Canvas>
     </div>
